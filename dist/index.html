@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kian - Sua Plataforma de Estudo Ativo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      :root, .theme-kian-dark {
+        --c-bg-primary: 17 24 39;      /* slate-900 */
+        --c-bg-secondary: 31 41 55;    /* slate-800 */
+        --c-bg-tertiary: 55 65 81;     /* slate-700 */
+        --c-bg-interactive: 71 85 105; /* slate-600 */
+        --c-border: 71 85 105;         /* slate-600 */
+        --c-text-primary: 241 245 249; /* slate-100 */
+        --c-text-secondary: 203 213 225;/* slate-300 */
+        --c-text-tertiary: 148 163 184;/* slate-400 */
+        --c-accent-primary: 139 92 246; /* purple-600 */
+        --c-accent-secondary: 22 163 74; /* green-600 */
+        --c-accent-gradient-from: 6 182 212; /* cyan-500 */
+        --c-accent-gradient-to: 139 92 246; /* purple-600 */
+        --c-accent-success: 74 222 128;  /* green-400 */
+        --c-accent-error: 248 113 113;  /* red-400 */
+      }
+      .theme-steampunk {
+        --c-bg-primary: 60 45 40;     /* Dark Brown */
+        --c-bg-secondary: 90 65 60;   /* Medium Brown */
+        --c-bg-tertiary: 120 90 85;  /* Light Brown */
+        --c-bg-interactive: 150 120 110;
+        --c-border: 150 120 110;
+        --c-text-primary: 245 225 200; /* Parchment */
+        --c-text-secondary: 215 195 170;
+        --c-text-tertiary: 185 165 140;
+        --c-accent-primary: 210 180 90; /* Gold */
+        --c-accent-secondary: 170 140 120;/* Brass */
+        --c-accent-gradient-from: 210 180 90;
+        --c-accent-gradient-to: 170 140 120;
+        --c-accent-success: 120 180 120; /* Faded Green */
+        --c-accent-error: 200 100 100;   /* Faded Red */
+      }
+      .theme-cyberpunk {
+        --c-bg-primary: 10 10 25;      /* Deep Blue/Purple */
+        --c-bg-secondary: 25 25 50;
+        --c-bg-tertiary: 40 40 75;
+        --c-bg-interactive: 55 55 100;
+        --c-border: 255 0 255;          /* Magenta border */
+        --c-text-primary: 240 240 255; /* Off-white */
+        --c-text-secondary: 180 180 220;
+        --c-text-tertiary: 140 140 180;
+        --c-accent-primary: 255 0 255; /* Magenta */
+        --c-accent-secondary: 0 255 255;/* Cyan */
+        --c-accent-gradient-from: 0 255 255;
+        --c-accent-gradient-to: 255 0 255;
+        --c-accent-success: 0 255 128;   /* Bright Green */
+        --c-accent-error: 255 255 0;     /* Yellow */
+      }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
+        theme: {
+          extend: {
+            colors: {
+              'bg-primary': 'rgb(var(--c-bg-primary) / <alpha-value>)',
+              'bg-secondary': 'rgb(var(--c-bg-secondary) / <alpha-value>)',
+              'bg-tertiary': 'rgb(var(--c-bg-tertiary) / <alpha-value>)',
+              'bg-interactive': 'rgb(var(--c-bg-interactive) / <alpha-value>)',
+              'border-color': 'rgb(var(--c-border) / <alpha-value>)',
+              'text-primary': 'rgb(var(--c-text-primary) / <alpha-value>)',
+              'text-secondary': 'rgb(var(--c-text-secondary) / <alpha-value>)',
+              'text-tertiary': 'rgb(var(--c-text-tertiary) / <alpha-value>)',
+              'accent-primary': 'rgb(var(--c-accent-primary) / <alpha-value>)',
+              'accent-secondary': 'rgb(var(--c-accent-secondary) / <alpha-value>)',
+              'accent-gradient-from': 'rgb(var(--c-accent-gradient-from) / <alpha-value>)',
+              'accent-gradient-to': 'rgb(var(--c-accent-gradient-to) / <alpha-value>)',
+              'accent-success': 'rgb(var(--c-accent-success) / <alpha-value>)',
+              'accent-error': 'rgb(var(--c-accent-error) / <alpha-value>)',
+            },
+            fontFamily: {
+                sans: ['Poppins', 'sans-serif'],
+            },
+            keyframes: {
+              'fade-in': {
+                '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              'toast-in-out': {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '10%': { transform: 'translateY(0)', opacity: '1' },
+                '90%': { transform: 'translateY(0)', opacity: '1' },
+                '100%': { transform: 'translateY(20px)', opacity: '0' },
+              }
+            },
+            animation: {
+              'fade-in': 'fade-in 0.5s ease-out forwards',
+              'toast': 'toast-in-out 4s ease-in-out forwards',
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
+    </script>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
+    "vite": "https://esm.sh/vite@^7.1.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.0.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-DIC-mcz8.js"></script>
+</head>
+<body class="bg-bg-tertiary">
+    <div id="root"></div>
+</body>
+</html>
